@@ -39,6 +39,11 @@ MEME.MemeEditorView = Backbone.View.extend({
       $('#font-family').append(buildOptions(d.fontFamilyOpts)).show();
     }
 
+    // Build color options:
+    if (d.mainColorOpts && d.mainColorOpts.length) {
+      $('#main-color').append(buildOptions(d.mainColorOpts)).show();
+    }
+
     // Build watermark options:
     if (d.watermarkOpts && d.watermarkOpts.length) {
       $('#watermark').append(buildOptions(d.watermarkOpts)).show();
@@ -74,6 +79,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.$('#image-scale').val(d.imageScale);
     this.$('#font-size').val(d.fontSize);
     this.$('#font-family').val(d.fontFamily);
+    this.$('#main-color').val(d.mainColor);
     this.$('#text-align').val(d.textAlign);
     this.$('#text-shadow').prop('checked', d.textShadow);
     this.$('#overlay').find('[value="'+d.overlayColor+'"]').prop('checked', true);
@@ -87,6 +93,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     'input #image-scale': 'onScale',
     'change #font-size': 'onFontSize',
     'change #font-family': 'onFontFamily',
+    'change #main-color': 'onMainColor',
     'change #watermark': 'onWatermark',
     'change #text-align': 'onTextAlign',
     'change #text-shadow': 'onTextShadow',
@@ -123,6 +130,10 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onFontFamily: function() {
     this.model.set('fontFamily', this.$('#font-family').val());
+  },
+
+  onMainColor: function() {
+    this.model.set('mainColor', this.$('#main-color').val());
   },
 
   onWatermark: function() {

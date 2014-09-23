@@ -87,7 +87,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     }
 
     function renderHeadline(ctx) {
-      var maxWidth = Math.round(d.width * 0.75);
+      var maxWidth = Math.round(d.width * 0.6);
       var x = padding+20;
       var y = padding;
 
@@ -163,7 +163,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
 
     function renderQuotemark(ctx) {
       ctx.textAlign = 'left';
-      ctx.fillStyle = d.quotemarkColor;
+      ctx.fillStyle = d.mainColor;
       switch(d.fontFamily) {
         case 'SundayTimesModern-Medium':
           var x = padding-22;
@@ -180,9 +180,8 @@ MEME.MemeCanvasView = Backbone.View.extend({
 
     function renderName(ctx) {
       ctx.textAlign = 'left';
-      ctx.fillStyle = d.nameColor;
+      ctx.fillStyle = d.mainColor;
       ctx.font = 'normal '+ Math.round(d.nameSize*1.5) +'pt '+ d.fontFamily;
-      console.log('Headline base: ' + headlineBase);
       nameBase = headlineBase + Math.round(d.nameSize * 2.2);
       ctx.fillText(d.nameText, padding+20, headlineBase);
     }
@@ -191,7 +190,6 @@ MEME.MemeCanvasView = Backbone.View.extend({
       ctx.textAlign = 'left';
       ctx.fillStyle = d.creditColor;
       ctx.font = 'normal '+ d.creditSize +'pt '+ d.fontFamily;
-      console.log('Name base: ' + nameBase);
       ctx.fillText(d.creditText, padding+20, nameBase);
     }
 
@@ -239,9 +237,16 @@ MEME.MemeCanvasView = Backbone.View.extend({
     // Create update function with draggable constraints:
     function update(evt) {
       evt.preventDefault();
-      model.set('backgroundPosition', {
+      
+
+      /**model.set('backgroundPosition', {
         x: Math.max(d.width-iw, Math.min(start.x - (origin.x - evt.clientX), iw)),
         y: Math.max(d.height-ih, Math.min(start.y - (origin.y - evt.clientY), ih))
+      });
+      **/
+      model.set('backgroundPosition', {
+        x: start.x - (origin.x - evt.clientX),
+        y: start.y - (origin.y - evt.clientY)
       });
     }
 

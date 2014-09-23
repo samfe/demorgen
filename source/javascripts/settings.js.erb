@@ -1,4 +1,14 @@
 var MEME_SETTINGS = {
+  mainColor: '#850029',
+  mainColorOpts: [
+    {text: 'Black', value: '#000000'},
+    {text: 'White', value: '#FFFFFF'},
+    {text: 'Red Box Red', value: '#E62A19'},
+    {text: 'Times News', value: '#2D415F'},
+    {text: 'Times Opinion', value: '#850029'},
+    {text: 'Times Money', value: '#007469'},
+  ],
+
   creditText: 'Credit', // Default "credits" text.
   creditSize: 14, // Font size for credit text.
   creditColor: '#000000',
@@ -30,7 +40,7 @@ var MEME_SETTINGS = {
   ],
 
   headlineText: 'Write your own headline', // Default headline text.
-  height: 378, // Canvas rendering height.
+  height: 296, // Canvas rendering height.
   imageScale: 1, // Background image scale.
   imageSrc: '', // Default background image path. MUST reside on host domain, or use base64 data.
   overlayAlpha: 0.5, // Opacity of image overlay.
@@ -68,10 +78,11 @@ var MEME_SETTINGS = {
   // NOTE: only populate the "data" attributes with base64 data when concerned about Cross-Origin requests...
   // Otherwise, just leave "data" attributes blank and allow images to load from your server.
   watermarkOpts: [
+    {text: 'None', value: '', data: ''},
     {text: 'Red Box', value: '<%= image_path("redbox.png") %>', data: '<%= asset_data_uri("redbox.png") %>'},
-    {text: 'The Times', value: '<%= image_path("thetimes.png") %>', data: ''},
-    {text: 'The Sunday Times', value: '<%= image_path("sundaytimes.png") %>', data: ''}
+    {text: 'The Times', value: '<%= image_path("thetimes.png") %>', data: '<%= asset_data_uri("thetimes.png") %>'},
+    {text: 'The Sunday Times', value: '<%= image_path("sundaytimes.png") %>', data: '<%= asset_data_uri("sundaytimes.png") %>'}
   ],
 
-  width: 755 // Canvas rendering width.
+  width: 600 // Canvas rendering width.
 };
