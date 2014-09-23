@@ -68,7 +68,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
       if (d.overlayColor) {
         ctx.save();
         ctx.globalAlpha = 1;
-        ctx.fillStyle = d.backgroundColor;
+        ctx.fillStyle = d.themeData[d.theme].background;
         ctx.fillRect(0, 0, d.width, d.height);
         ctx.globalAlpha = 1;
         ctx.restore();
@@ -92,7 +92,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
       var y = padding;
 
       ctx.font = d.fontSize +'pt '+ d.fontFamily;
-      ctx.fillStyle = d.fontColor;
+      ctx.fillStyle = d.themeData[d.theme].main;
       ctx.textBaseline = 'top';
 
       // Text shadow:
@@ -163,7 +163,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
 
     function renderQuotemark(ctx) {
       ctx.textAlign = 'left';
-      ctx.fillStyle = d.mainColor;
+      ctx.fillStyle = d.themeData[d.theme].main;
       switch(d.fontFamily) {
         case 'SundayTimesModern-Medium':
           var x = padding-22;
@@ -180,7 +180,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
 
     function renderName(ctx) {
       ctx.textAlign = 'left';
-      ctx.fillStyle = d.mainColor;
+      ctx.fillStyle = d.themeData[d.theme].secondary;
       ctx.font = 'normal '+ Math.round(d.nameSize*1.5) +'pt '+ d.fontFamily;
       nameBase = headlineBase + Math.round(d.nameSize * 2.2);
       ctx.fillText(d.nameText, padding+20, headlineBase);

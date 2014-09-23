@@ -1,13 +1,23 @@
 var MEME_SETTINGS = {
-  mainColor: '#850029',
-  mainColorOpts: [
-    {text: 'Black', value: '#000000'},
-    {text: 'White', value: '#FFFFFF'},
-    {text: 'Red Box Red', value: '#E62A19'},
-    {text: 'Times News', value: '#2D415F'},
-    {text: 'Times Opinion', value: '#850029'},
-    {text: 'Times Money', value: '#007469'},
+  theme: 'red-box',
+  themeOpts: [
+    {text: 'Red Box', value: 'red-box'},
+    {text: 'The Times Business', value: 'the-times-business'},
   ],
+  themeData: {
+    'red-box': {
+      background: '#aec1d0',
+      main: '#183a54',
+      secondary: '#ffffff',
+      quote: '#183a54',
+    },
+    'the-times-business': {
+      background: '#eaeaea',
+      main: '#000',
+      secondary: '#FFF',
+      quote: '#000',
+    },
+  },
 
   creditText: 'Credit', // Default "credits" text.
   creditSize: 14, // Font size for credit text.
@@ -52,7 +62,7 @@ var MEME_SETTINGS = {
 
   backgroundColor: '#ebebe9',
   // Overlay color options: set to empty array to disable overlay options selector.
-  backgroundColorOpts: ['#ebebe9'],
+  backgroundColorOpts: ['#ebebe9', '#aec1d0'],
 
   paddingRatio: 0.05, // Percentage of canvas width to use as edge padding.
   
@@ -68,7 +78,7 @@ var MEME_SETTINGS = {
   textShadow: false, // Text shadow toggle.
   textShadowEdit: true, // Toggles text shadow control within the editor.
   watermarkAlpha: 1, // Opacity of watermark image.
-  watermarkMaxWidthRatio: 0.25, // Maximum allowed width of watermark (percentage of total canvas width).
+  watermarkMaxWidthRatio: 0.5, // Maximum allowed width of watermark (percentage of total canvas width).
 
   // Path to the watermark image source, or blank for no watermark:
   // Alternatively, use '<%= asset_data_uri("vox.png") %>' to populate the watermark with base64 data, avoiding Cross-Origin issues.
@@ -79,7 +89,7 @@ var MEME_SETTINGS = {
   // Otherwise, just leave "data" attributes blank and allow images to load from your server.
   watermarkOpts: [
     {text: 'None', value: '', data: ''},
-    {text: 'Red Box', value: '<%= image_path("redbox.png") %>', data: '<%= asset_data_uri("redbox.png") %>'},
+    {text: 'Red Box', value: '<%= image_path("redbox-times.png") %>', data: '<%= asset_data_uri("redbox-times.png") %>'},
     {text: 'The Times', value: '<%= image_path("thetimes.png") %>', data: '<%= asset_data_uri("thetimes.png") %>'},
     {text: 'The Sunday Times', value: '<%= image_path("sundaytimes.png") %>', data: '<%= asset_data_uri("sundaytimes.png") %>'}
   ],
