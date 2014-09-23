@@ -1,23 +1,32 @@
 var MEME_SETTINGS = {
-  creditText: 'Source:', // Default "credits" text.
-  creditSize: 12, // Font size for credit text.
+  creditText: 'Credit', // Default "credits" text.
+  creditSize: 14, // Font size for credit text.
+  creditColor: '#000000',
   downloadName: 'share', // The name of the downloaded image file (will have a ".png" extension added).
-  fontColor: 'white', // Universal font color.
+  fontColor: '#6b6b6b', // Universal font color.
+
+  nameText: 'Name of writer',
+  nameSize: 18,
+  nameColor: '#850029',
+
+  quotemarkText: '“',
+  quotemarkSize: 130,
+  quotemarkColor: '#850029',
 
   // Universal font family for texts:
   // Note that you'll need to included quoted font names as you would in CSS, ie: '"Knockout 28 B"'.
-  fontFamily: 'Helvetica Neue',
+  fontFamily: 'TimesModern-Regular',
   // Font family options: set to empty array to disable font selector.
   // These options may also be formatted as {text:'Knockout', value:'"Knockout 28 B"'}.
-  fontFamilyOpts: ['Arial', 'Helvetica Neue', 'Comic Sans MS'],
+  fontFamilyOpts: ['TimesModern-Regular', 'SundayTimesModern-Medium'],
   
   // Font size of main headline:
   fontSize: 24,
   // Font size options: set to empty array to disable font-size selector.
   fontSizeOpts: [
-    {text: 'Small text', value: 14},
-    {text: 'Medium text', value: 24},
-    {text: 'Large text', value: 36}
+    {text: 'Small text', value: 12},
+    {text: 'Medium text', value: 22},
+    {text: 'Large text', value: 32}
   ],
 
   headlineText: 'Write your own headline', // Default headline text.
@@ -27,9 +36,14 @@ var MEME_SETTINGS = {
   overlayAlpha: 0.5, // Opacity of image overlay.
 
   // Image overlay color, or blank ('') for no overlay:
-  overlayColor: '#000',
+  overlayColor: '#ebebe9',
   // Overlay color options: set to empty array to disable overlay options selector.
-  overlayColorOpts: ['#000', '#777', '#2980b9'],
+  overlayColorOpts: ['#ebebe9'],
+
+  backgroundColor: '#ebebe9',
+  // Overlay color options: set to empty array to disable overlay options selector.
+  backgroundColorOpts: ['#ebebe9'],
+
   paddingRatio: 0.05, // Percentage of canvas width to use as edge padding.
   
   // Text alignment: valid settings are "left", "center", and "right".
@@ -48,14 +62,15 @@ var MEME_SETTINGS = {
 
   // Path to the watermark image source, or blank for no watermark:
   // Alternatively, use '<%= asset_data_uri("vox.png") %>' to populate the watermark with base64 data, avoiding Cross-Origin issues.
-  watermarkSrc: (localStorage && localStorage.getItem('meme_watermark')) || '<%= image_path("vox.png") %>',
+  watermarkSrc: (localStorage && localStorage.getItem('meme_watermark')) || '<%= image_path("redbox.png") %>',
   
   // Watermark image options: set to empty array to disable watermark picker.
   // NOTE: only populate the "data" attributes with base64 data when concerned about Cross-Origin requests...
   // Otherwise, just leave "data" attributes blank and allow images to load from your server.
   watermarkOpts: [
-    {text: 'Vox', value: '<%= image_path("vox.png") %>', data: '<%= asset_data_uri("vox.png") %>'},
-    {text: 'The Verge', value: '<%= image_path("theverge.png") %>', data: ''}
+    {text: 'Red Box', value: '<%= image_path("redbox.png") %>', data: '<%= asset_data_uri("redbox.png") %>'},
+    {text: 'The Times', value: '<%= image_path("thetimes.png") %>', data: ''},
+    {text: 'The Sunday Times', value: '<%= image_path("sundaytimes.png") %>', data: ''}
   ],
 
   width: 755 // Canvas rendering width.

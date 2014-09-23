@@ -2,6 +2,9 @@
 * MemeCanvasView
 * Manages the creation, rendering, and download of the Meme image.
 */
+var headlineBase = 0;
+var nameBase = 0;
+
 MEME.MemeCanvasView = Backbone.View.extend({
 
   initialize: function() {
@@ -61,6 +64,17 @@ MEME.MemeCanvasView = Backbone.View.extend({
       }
     }
 
+    function renderBackgroundColor(ctx) {
+      if (d.overlayColor) {
+        ctx.save();
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = d.backgroundColor;
+        ctx.fillRect(0, 0, d.width, d.height);
+        ctx.globalAlpha = 1;
+        ctx.restore();
+      }
+    }
+
     function renderOverlay(ctx) {
       if (d.overlayColor) {
         ctx.save();
@@ -74,7 +88,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
 
     function renderHeadline(ctx) {
       var maxWidth = Math.round(d.width * 0.75);
-      var x = padding;
+      var x = padding+20;
       var y = padding;
 
       ctx.font = d.fontSize +'pt '+ d.fontFamily;
@@ -113,24 +127,16 @@ MEME.MemeCanvasView = Backbone.View.extend({
         var testWidth = metrics.width;
 
         if (testWidth > maxWidth && n > 0) {
-          ctx.fillText(line, x, y);
+          ctx.fillText(line, x, y-10);
           line = words[n] + ' ';
           y += Math.round(d.fontSize * 1.5);
         } else {
           line = testLine;
         }
       }
-
-      ctx.fillText(line, x, y);
+      ctx.fillText(line, x, y-10);
       ctx.shadowColor = 'transparent';
-    }
-
-    function renderCredit(ctx) {
-      ctx.textBaseline = 'bottom';
-      ctx.textAlign = 'left';
-      ctx.fillStyle = d.fontColor;
-      ctx.font = 'normal '+ d.creditSize +'pt '+ d.fontFamily;
-      ctx.fillText(d.creditText, padding, d.height - padding);
+      headlineBase = y+Math.round(d.fontSize * 1.5)-10;
     }
 
     function renderWatermark(ctx) {
@@ -150,16 +156,54 @@ MEME.MemeCanvasView = Backbone.View.extend({
         }
 
         ctx.globalAlpha = d.watermarkAlpha;
-        ctx.drawImage(m.watermark, 0, 0, bw, bh, d.width-padding-tw, d.height-padding-th, tw, th);
+        ctx.drawImage(m.watermark, 0, 0, bw, bh, 20, d.height-20-th, tw, th);
         ctx.globalAlpha = 1;
       }
     }
 
+    function renderQuotemark(ctx) {
+      ctx.textAlign = 'left';
+      ctx.fillStyle = d.quotemarkColor;
+      switch(d.fontFamily) {
+        case 'SundayTimesModern-Medium':
+          var x = padding-22;
+          var y = padding-25;
+          break;
+        default:
+          var x = padding-20;
+          var y = padding-10;
+          break;
+      }
+      ctx.font = 'normal '+ (d.fontSize*2.7) +'pt '+ d.fontFamily;
+      ctx.fillText(d.quotemarkText, padding-20, y);
+    }
+
+    function renderName(ctx) {
+      ctx.textAlign = 'left';
+      ctx.fillStyle = d.nameColor;
+      ctx.font = 'normal '+ Math.round(d.nameSize*1.5) +'pt '+ d.fontFamily;
+      console.log('Headline base: ' + headlineBase);
+      nameBase = headlineBase + Math.round(d.nameSize * 2.2);
+      ctx.fillText(d.nameText, padding+20, headlineBase);
+    }
+
+    function renderCredit(ctx) {
+      ctx.textAlign = 'left';
+      ctx.fillStyle = d.creditColor;
+      ctx.font = 'normal '+ d.creditSize +'pt '+ d.fontFamily;
+      console.log('Name base: ' + nameBase);
+      ctx.fillText(d.creditText, padding+20, nameBase);
+    }
+
+    renderBackgroundColor(ctx);
     renderBackground(ctx);
-    renderOverlay(ctx);
+    //renderOverlay(ctx);
     renderHeadline(ctx);
-    renderCredit(ctx);
+    //renderCredit(ctx);
     renderWatermark(ctx);
+    renderQuotemark(ctx);
+    renderName(ctx);
+    renderCredit(ctx);
 
     var data = this.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
     this.$('#meme-download').attr({

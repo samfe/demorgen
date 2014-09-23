@@ -48,7 +48,7 @@ $m: '.m-editor';
     display: none;
   }
 
-  #{$m}__overlay {
+  #{$m}__overlay, #{$m}__background  {
     display: none;
 
     // Mini-clearfix:

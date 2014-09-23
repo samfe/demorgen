@@ -53,11 +53,22 @@ MEME.MemeEditorView = Backbone.View.extend({
 
       $('#overlay').show().find('ul').append(overlayOpts);
     }
+
+    // Build background color options:
+    if (d.backgroundColorOpts && d.backgroundColorOpts.length) {
+      var backgroundOpts = _.reduce(d.backgroundColorOpts, function(memo, opt) {
+        var color = opt.hasOwnProperty('value') ? opt.value : opt;
+        return memo += '<li><label><input class="m-editor__swatch" style="background-color:'+color+'" type="radio" name="background" value="'+color+'"></label></li>';
+      }, '');
+
+      $('#background').show().find('ul').append(backgroundOpts);
+    }
   },
 
   render: function() {
     var d = this.model.toJSON();
     this.$('#headline').val(d.headlineText);
+    this.$('#name').val(d.nameText);
     this.$('#credit').val(d.creditText);
     this.$('#watermark').val(d.watermarkSrc);
     this.$('#image-scale').val(d.imageScale);
@@ -66,11 +77,13 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.$('#text-align').val(d.textAlign);
     this.$('#text-shadow').prop('checked', d.textShadow);
     this.$('#overlay').find('[value="'+d.overlayColor+'"]').prop('checked', true);
+    this.$('#background').find('[value="'+d.backgroundColor+'"]').prop('checked', true);
   },
 
   events: {
     'input #headline': 'onHeadline',
     'input #credit': 'onCredit',
+    'input #name': 'onName',
     'input #image-scale': 'onScale',
     'change #font-size': 'onFontSize',
     'change #font-family': 'onFontFamily',
@@ -78,9 +91,14 @@ MEME.MemeEditorView = Backbone.View.extend({
     'change #text-align': 'onTextAlign',
     'change #text-shadow': 'onTextShadow',
     'change [name="overlay"]': 'onOverlayColor',
+    'change [name="background"]': 'onBackgroundColor',
     'dragover #dropzone': 'onZoneOver',
     'dragleave #dropzone': 'onZoneOut',
     'drop #dropzone': 'onZoneDrop'
+  },
+
+  onName: function() {
+    this.model.set('nameText', this.$('#name').val());
   },
 
   onCredit: function() {
@@ -118,6 +136,10 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onOverlayColor: function(evt) {
     this.model.set('overlayColor', this.$(evt.target).val());
+  },
+
+  onBackgroundColor: function(evt) {
+    this.model.set('backgroundColor', this.$(evt.target).val());
   },
 
   getDataTransfer: function(evt) {
