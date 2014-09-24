@@ -30,7 +30,7 @@ set :absolute_prefix, 'http://localhost:4567'
 configure :build do
   puts "local build"
   set :url_prefix, '/'
-  set :absolute_prefix, 'http://chrishutchinson.github.io/meme'
+  set :absolute_prefix, 'http://times.github.io/cardkit'
   activate :asset_hash
   activate :minify_javascript
   activate :minify_css

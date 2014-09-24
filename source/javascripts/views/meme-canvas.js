@@ -163,7 +163,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
 
     function renderQuotemark(ctx) {
       ctx.textAlign = 'left';
-      ctx.fillStyle = d.themeData[d.theme].main;
+      ctx.fillStyle = d.themeData[d.theme].quote;
       switch(d.fontFamily) {
         case 'SundayTimesModern-Medium':
           var x = padding-22;

@@ -3,6 +3,7 @@ var MEME_SETTINGS = {
   themeOpts: [
     {text: 'Red Box', value: 'red-box'},
     {text: 'The Times Business', value: 'the-times-business'},
+    {text: 'The Times Opinion', value: 'the-times-opinion'},
   ],
   themeData: {
     'red-box': {
@@ -17,6 +18,12 @@ var MEME_SETTINGS = {
       secondary: '#FFF',
       quote: '#000',
     },
+    'the-times-opinion': {
+      background: '#ebebe9',
+      main: '#6b6b6b',
+      secondary: '#850029',
+      quote: '#850029',
+    },
   },
 
   creditText: 'Credit', // Default "credits" text.
@@ -26,7 +33,7 @@ var MEME_SETTINGS = {
   fontColor: '#6b6b6b', // Universal font color.
 
   nameText: 'Name of writer',
-  nameSize: 18,
+  nameSize: 16,
   nameColor: '#850029',
 
   quotemarkText: '“',
@@ -41,7 +48,7 @@ var MEME_SETTINGS = {
   fontFamilyOpts: ['TimesModern-Regular', 'SundayTimesModern-Medium'],
   
   // Font size of main headline:
-  fontSize: 24,
+  fontSize: 22,
   // Font size options: set to empty array to disable font-size selector.
   fontSizeOpts: [
     {text: 'Small text', value: 18},
@@ -81,7 +88,7 @@ var MEME_SETTINGS = {
   watermarkMaxWidthRatio: 0.4, // Maximum allowed width of watermark (percentage of total canvas width).
 
   // Path to the watermark image source, or blank for no watermark:
-  // Alternatively, use '<%= asset_data_uri("vox.png") %>' to populate the watermark with base64 data, avoiding Cross-Origin issues.
+  // Alternatively, use '<%= asset_data_uri("redbox.png") %>' to populate the watermark with base64 data, avoiding Cross-Origin issues.
   watermarkSrc: (localStorage && localStorage.getItem('meme_watermark')) || '<%= image_path("redbox.png") %>',
   
   // Watermark image options: set to empty array to disable watermark picker.
