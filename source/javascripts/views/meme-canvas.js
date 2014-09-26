@@ -107,7 +107,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
       if (d.textAlign == 'center') {
         ctx.textAlign = 'center';
         x = d.width / 2;
-        y = d.height - d.height / 1.5;
+        y = d.height - d.height / 1.3;
         maxWidth = d.width - d.width / 3;
 
       } else if (d.textAlign == 'right' ) {
@@ -162,35 +162,65 @@ MEME.MemeCanvasView = Backbone.View.extend({
     }
 
     function renderQuotemark(ctx) {
-      ctx.textAlign = 'left';
-      ctx.fillStyle = d.themeData[d.theme].quote;
-      switch(d.fontFamily) {
-        case 'SundayTimesModern-Medium':
-          var x = padding-22;
-          var y = padding-25;
-          break;
-        default:
-          var x = padding-20;
-          var y = padding-10;
-          break;
+      if (d.textAlign !== 'center') {
+        ctx.textAlign = 'left';
+        ctx.fillStyle = d.themeData[d.theme].quote;
+        switch(d.fontFamily) {
+          case 'SundayTimesModern-Medium':
+            var x = padding-22;
+            var y = padding-25;
+            break;
+          default:
+            var x = padding-20;
+            var y = padding-10;
+            break;
+        }
+        ctx.font = 'normal '+ (d.fontSize*2.7) +'pt '+ d.fontFamily;
+        ctx.fillText(d.quotemarkText, padding-20, y);
       }
-      ctx.font = 'normal '+ (d.fontSize*2.7) +'pt '+ d.fontFamily;
-      ctx.fillText(d.quotemarkText, padding-20, y);
     }
 
     function renderName(ctx) {
-      ctx.textAlign = 'left';
       ctx.fillStyle = d.themeData[d.theme].secondary;
       ctx.font = 'normal '+ Math.round(d.nameSize*1.5) +'pt '+ d.fontFamily;
       nameBase = headlineBase + Math.round(d.nameSize * 2.2);
-      ctx.fillText(d.nameText, padding+20, headlineBase);
+
+      var x = padding+20;
+      var y = headlineBase;
+
+      // Text alignment:
+      if (d.textAlign == 'center') {
+        ctx.textAlign = 'center';
+        x = d.width / 2;
+      } else if (d.textAlign == 'right' ) {
+        ctx.textAlign = 'right';
+        x = d.width - padding;
+      } else {
+        ctx.textAlign = 'left';
+      }
+
+      ctx.fillText(d.nameText, x, y);
     }
 
     function renderCredit(ctx) {
-      ctx.textAlign = 'left';
       ctx.fillStyle = d.creditColor;
       ctx.font = 'normal '+ d.creditSize +'pt '+ d.fontFamily;
-      ctx.fillText(d.creditText, padding+20, nameBase);
+      
+      var x = padding+20;
+      var y = nameBase;
+
+      // Text alignment:
+      if (d.textAlign == 'center') {
+        ctx.textAlign = 'center';
+        x = d.width / 2;
+      } else if (d.textAlign == 'right' ) {
+        ctx.textAlign = 'right';
+        x = d.width - padding;
+      } else {
+        ctx.textAlign = 'left';
+      }
+
+      ctx.fillText(d.creditText, x, y);
     }
 
     renderBackgroundColor(ctx);
