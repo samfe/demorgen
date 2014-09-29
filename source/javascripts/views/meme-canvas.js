@@ -168,15 +168,15 @@ MEME.MemeCanvasView = Backbone.View.extend({
         switch(d.fontFamily) {
           case 'SundayTimesModern-Medium':
             var x = padding-22;
-            var y = padding-25;
+            var y = padding-22;
             break;
           default:
-            var x = padding-20;
+            var x = padding-14;
             var y = padding-10;
             break;
         }
         ctx.font = 'normal '+ (d.fontSize*2.7) +'pt '+ d.fontFamily;
-        ctx.fillText(d.quotemarkText, padding-20, y);
+        ctx.fillText(d.quotemarkText, x, y);
       }
     }
 
