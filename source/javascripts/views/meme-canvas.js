@@ -111,30 +111,36 @@ MEME.MemeCanvasView = Backbone.View.extend({
         maxWidth = d.width - d.width / 3;
 
       } else if (d.textAlign == 'right' ) {
-        ctx.textAlign = 'right';
-        x = d.width - padding;
-
+        ctx.textAlign = 'left';
+        x = (d.width / 2) - (padding*2);
       } else {
         ctx.textAlign = 'left';
       }
 
-      var words = d.headlineText.split(' ');
-      var line  = '';
+      var lines = d.headlineText.split("\n");
+      for (var m = 0; m < lines.length; m++) {
+        var words = lines[m].split(' ');
+        var line  = '';
 
-      for (var n = 0; n < words.length; n++) {
-        var testLine  = line + words[n] + ' ';
-        var metrics   = ctx.measureText( testLine );
-        var testWidth = metrics.width;
-
-        if (testWidth > maxWidth && n > 0) {
-          ctx.fillText(line, x, y-10);
-          line = words[n] + ' ';
+        if(m > 0) {
           y += Math.round(d.fontSize * 1.5);
-        } else {
-          line = testLine;
         }
+
+        for (var n = 0; n < words.length; n++) {
+          var testLine  = line + words[n] + ' ';
+          var metrics   = ctx.measureText( testLine );
+          var testWidth = metrics.width;
+
+          if (testWidth > maxWidth && n > 0) {
+            ctx.fillText(line, x, y-10);
+            line = words[n] + ' ';
+            y += Math.round(d.fontSize * 1.5);
+          } else {
+            line = testLine;
+          }
+        }
+        ctx.fillText(line, x, y-10);
       }
-      ctx.fillText(line, x, y-10);
       ctx.shadowColor = 'transparent';
       headlineBase = y+Math.round(d.fontSize * 1.5)-10;
     }
@@ -162,27 +168,43 @@ MEME.MemeCanvasView = Backbone.View.extend({
     }
 
     function renderQuotemark(ctx) {
-      if (d.textAlign !== 'center') {
+      if (d.textAlign == 'left') {
         ctx.textAlign = 'left';
         ctx.fillStyle = d.themeData[d.theme].quote;
         switch(d.fontFamily) {
           case 'SundayTimesModern-Medium':
-            var x = padding-22;
-            var y = padding-22;
+            switch(d.fontSize) {
+              case '28':
+                var x = padding-24;
+                var y = padding-26;
+                break;
+              default:
+                var x = padding-16;
+                var y = padding-21;
+                break;
+            }
+            ctx.font = 'normal '+ (d.fontSize*2.7) +'pt '+ d.fontFamily;
             break;
           default:
-            var x = padding-14;
+            switch(d.fontSize) {
+              case '28':
+                var x = padding-10;
+                break;
+              default:
+                var x = padding-4;
+                break;
+            }
             var y = padding-10;
+            ctx.font = 'normal '+ (d.fontSize*2.9) +'pt '+ d.fontFamily;
             break;
         }
-        ctx.font = 'normal '+ (d.fontSize*2.7) +'pt '+ d.fontFamily;
         ctx.fillText(d.quotemarkText, x, y);
       }
     }
 
     function renderName(ctx) {
       ctx.fillStyle = d.themeData[d.theme].secondary;
-      ctx.font = 'normal '+ Math.round(d.nameSize*1.5) +'pt '+ d.fontFamily;
+      ctx.font = 'normal '+ Math.round(d.fontSize*0.9) +'pt '+ d.fontFamily;
       nameBase = headlineBase + Math.round(d.nameSize * 2.2);
 
       var x = padding+20;
@@ -193,8 +215,8 @@ MEME.MemeCanvasView = Backbone.View.extend({
         ctx.textAlign = 'center';
         x = d.width / 2;
       } else if (d.textAlign == 'right' ) {
-        ctx.textAlign = 'right';
-        x = d.width - padding;
+        ctx.textAlign = 'left';
+        x = (d.width / 2) - (padding*2);
       } else {
         ctx.textAlign = 'left';
       }
@@ -214,8 +236,8 @@ MEME.MemeCanvasView = Backbone.View.extend({
         ctx.textAlign = 'center';
         x = d.width / 2;
       } else if (d.textAlign == 'right' ) {
-        ctx.textAlign = 'right';
-        x = d.width - padding;
+        ctx.textAlign = 'left';
+        x = (d.width / 2) - (padding*2);
       } else {
         ctx.textAlign = 'left';
       }

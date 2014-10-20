@@ -17,9 +17,9 @@ var MEME_SETTINGS = {
     },
     'the-times-business': {
       background: '#eaeaea',
-      main: '#000',
-      secondary: '#FFF',
-      quote: '#000',
+      main: '#6b6b6b',
+      secondary: '#14575a',
+      quote: '#14575a',
     },
     'the-times-opinion': {
       background: '#ebebe9',
@@ -58,7 +58,7 @@ var MEME_SETTINGS = {
   nameColor: '#850029',
 
   quotemarkText: '“',
-  quotemarkSize: 130,
+  quotemarkSize: 140,
   quotemarkColor: '#850029',
 
   // Universal font family for texts:
@@ -66,7 +66,10 @@ var MEME_SETTINGS = {
   fontFamily: 'TimesModernCondensed-Regular',
   // Font family options: set to empty array to disable font selector.
   // These options may also be formatted as {text:'Knockout', value:'"Knockout 28 B"'}.
-  fontFamilyOpts: ['TimesModernCondensed-Regular', 'SundayTimesModern-Medium'],
+  fontFamilyOpts: [
+    {text: 'Times Modern Condensed - Regular', value: 'TimesModernCondensed-Regular'},
+    {text: 'Sunday Times Modern - Medium', value: 'SundayTimesModern-Medium'},
+  ],
 
   // Font size of main headline:
   fontSize: 22,
@@ -74,12 +77,13 @@ var MEME_SETTINGS = {
   fontSizeOpts: [
     {text: 'Small text', value: 18},
     {text: 'Medium text', value: 22},
-    {text: 'Large text', value: 32},
-    {text: 'Extra Large text', value: 62}
+    {text: 'Large text', value: 28},
+    {text: 'Extra Large text', value: 36},
+    {text: 'Supersized text', value: 62}
   ],
 
   headlineText: 'Write your own headline', // Default headline text.
-  height: 296, // Canvas rendering height.
+  height: 335, // Canvas rendering height.
   imageScale: 1, // Background image scale.
   imageSrc: '', // Default background image path. MUST reside on host domain, or use base64 data.
   overlayAlpha: 0.5, // Opacity of image overlay.
@@ -100,8 +104,7 @@ var MEME_SETTINGS = {
   // Text alignment options: set to empty array to disable alignment picker.
   textAlignOpts: [
     {text: 'Align left', value: 'left'},
-    {text: 'Align center', value: 'center'},
-    {text: 'Align right', value: 'right'}
+    {text: 'Align center', value: 'center'}
   ],
 
   textShadow: false, // Text shadow toggle.

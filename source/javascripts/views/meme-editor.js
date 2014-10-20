@@ -101,7 +101,67 @@ MEME.MemeEditorView = Backbone.View.extend({
     'change [name="background"]': 'onBackgroundColor',
     'dragover #dropzone': 'onZoneOver',
     'dragleave #dropzone': 'onZoneOut',
-    'drop #dropzone': 'onZoneDrop'
+    'drop #dropzone': 'onZoneDrop',
+    'click #doubleOpenQuote': 'onDoubleOpenQuote',
+    'click #doubleCloseQuote': 'onDoubleCloseQuote',
+    'click #singleOpenQuote': 'onSingleOpenQuote',
+    'click #singleCloseQuote': 'onSingleCloseQuote',
+    'click #emdash': 'onEmdash'
+  },
+
+  onDoubleOpenQuote: function() {
+    var cursor = this.$('#headline')[0].selectionStart;
+    var cursorEnd = this.$('#headline')[0].selectionEnd;
+    var value = this.$('#headline').val();
+    
+    if(cursorEnd > cursor) {
+      this.$('#headline').val(value.substring(0, cursorEnd) + '”' + value.substring(cursorEnd));
+      value = this.$('#headline').val();
+    }
+    
+    this.$('#headline').val(value.substring(0, cursor) + '“' + value.substring(cursor));
+
+    this.onHeadline();
+    return false;
+  },
+
+  onDoubleCloseQuote: function() {
+    var cursor = this.$('#headline')[0].selectionStart;
+    var value = this.$('#headline').val();
+    this.$('#headline').val(value.substring(0, cursor) + '”' + value.substring(cursor));
+    this.onHeadline();
+    return false;
+  },
+
+  onSingleOpenQuote: function() {
+    var cursor = this.$('#headline')[0].selectionStart;
+    var cursorEnd = this.$('#headline')[0].selectionEnd;
+    var value = this.$('#headline').val();
+    
+    if(cursorEnd > cursor) {
+      this.$('#headline').val(value.substring(0, cursorEnd) + '’' + value.substring(cursorEnd));
+      value = this.$('#headline').val();
+    }
+    
+    this.$('#headline').val(value.substring(0, cursor) + '‘' + value.substring(cursor));
+    this.onHeadline();
+    return false;
+  },
+
+  onSingleCloseQuote: function() {
+    var cursor = this.$('#headline')[0].selectionStart;
+    var value = this.$('#headline').val();
+    this.$('#headline').val(value.substring(0, cursor) + '’' + value.substring(cursor));
+    this.onHeadline();
+    return false;
+  },
+
+  onEmdash: function() {
+    var cursor = this.$('#headline')[0].selectionStart;
+    var value = this.$('#headline').val();
+    this.$('#headline').val(value.substring(0, cursor) + '—' + value.substring(cursor));
+    this.onHeadline();
+    return false;
   },
 
   onName: function() {
