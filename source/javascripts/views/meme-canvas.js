@@ -89,10 +89,10 @@ MEME.MemeCanvasView = Backbone.View.extend({
     function renderHeadline(ctx) {
       var maxWidth = Math.round(d.width * 0.6);
       var x = padding+20;
-      var y = padding;
+      var y = padding+6;
 
-      ctx.font = d.fontSize +'pt '+ d.fontFamily;
-      ctx.fillStyle = d.themeData[d.theme].main;
+      ctx.font = d.fontSize +'pt '+ d.themeData[d.theme].headlineFont;
+      ctx.fillStyle = d.themeData[d.theme].headline;
       ctx.textBaseline = 'top';
 
       // Text shadow:
@@ -123,7 +123,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
         var line  = '';
 
         if(m > 0) {
-          y += Math.round(d.fontSize * 1.5);
+          y += Math.round(d.fontSize * 1.55);
         }
 
         for (var n = 0; n < words.length; n++) {
@@ -134,7 +134,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
           if (testWidth > maxWidth && n > 0) {
             ctx.fillText(line, x, y-10);
             line = words[n] + ' ';
-            y += Math.round(d.fontSize * 1.5);
+            y += Math.round(d.fontSize * 1.55);
           } else {
             line = testLine;
           }
@@ -142,7 +142,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
         ctx.fillText(line, x, y-10);
       }
       ctx.shadowColor = 'transparent';
-      headlineBase = y+Math.round(d.fontSize * 1.5)-10;
+      headlineBase = y+Math.round(d.fontSize * 1.55)-10;
     }
 
     function renderWatermark(ctx) {
@@ -171,7 +171,9 @@ MEME.MemeCanvasView = Backbone.View.extend({
       if (d.textAlign == 'left') {
         ctx.textAlign = 'left';
         ctx.fillStyle = d.themeData[d.theme].quote;
-        switch(d.fontFamily) {
+
+        switch(d.themeData[d.theme].headlineFont) {
+          case '"SundayTimesModern-Medium"':
           case 'SundayTimesModern-Medium':
             switch(d.fontSize) {
               case '28':
@@ -183,7 +185,35 @@ MEME.MemeCanvasView = Backbone.View.extend({
                 var y = padding-21;
                 break;
             }
-            ctx.font = 'normal '+ (d.fontSize*2.7) +'pt '+ d.fontFamily;
+            ctx.font = 'normal '+ (d.fontSize*2.7) +'pt '+ d.themeData[d.theme].headlineFont;
+            break;
+          case '"TimesModernCondensed-Bold"':
+          case 'TimesModernCondensed-Bold':
+            switch(d.fontSize) {
+              case '28':
+                var x = padding-10;
+                var y = padding-2;
+                break;
+              default:
+                var x = padding-8;
+                var y = padding-5;
+                break;
+            }
+            ctx.font = 'normal '+ (d.fontSize*2.7) +'pt '+ d.themeData[d.theme].headlineFont;
+            break;
+          case '"TimesModernCondensed-Regular"':
+          case 'TimesModernCondensed-Regular':
+            switch(d.fontSize) {
+              case '28':
+                var x = padding-10;
+                var y = padding-2;
+                break;
+              default:
+                var x = padding-8;
+                var y = padding-5;
+                break;
+            }
+            ctx.font = 'normal '+ (d.fontSize*3.1) +'pt '+ d.themeData[d.theme].headlineFont;
             break;
           default:
             switch(d.fontSize) {
@@ -195,7 +225,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
                 break;
             }
             var y = padding-10;
-            ctx.font = 'normal '+ (d.fontSize*2.9) +'pt '+ d.fontFamily;
+            ctx.font = 'normal '+ (d.fontSize*2.9) +'pt '+ d.themeData[d.theme].headlineFont;
             break;
         }
         ctx.fillText(d.quotemarkText, x, y);
@@ -203,12 +233,12 @@ MEME.MemeCanvasView = Backbone.View.extend({
     }
 
     function renderName(ctx) {
-      ctx.fillStyle = d.themeData[d.theme].secondary;
-      ctx.font = 'normal '+ Math.round(d.fontSize*0.9) +'pt '+ d.fontFamily;
+      ctx.fillStyle = d.themeData[d.theme].name;
+      ctx.font = 'normal '+ Math.round(d.fontSize*0.9) +'pt '+ d.themeData[d.theme].nameFont;
       nameBase = headlineBase + Math.round(d.nameSize * 2.2);
 
       var x = padding+20;
-      var y = headlineBase;
+      var y = headlineBase+4;
 
       // Text alignment:
       if (d.textAlign == 'center') {
@@ -225,11 +255,11 @@ MEME.MemeCanvasView = Backbone.View.extend({
     }
 
     function renderCredit(ctx) {
-      ctx.fillStyle = d.creditColor;
-      ctx.font = 'normal '+ d.creditSize +'pt '+ d.fontFamily;
+      ctx.fillStyle = d.themeData[d.theme].credit;
+      ctx.font = 'normal '+ d.creditSize +'pt '+ d.themeData[d.theme].font;
       
       var x = padding+20;
-      var y = nameBase;
+      var y = nameBase+4;
 
       // Text alignment:
       if (d.textAlign == 'center') {

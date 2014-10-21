@@ -3,17 +3,22 @@ var MEME_SETTINGS = {
   themeOpts: [
     {text: 'Red Box', value: 'red-box'},
     {text: 'The Times News', value: 'the-times-news'},
-    {text: 'The Times Business', value: 'the-times-business'},
-    {text: 'The Times Opinion', value: 'the-times-opinion'},
-    {text: 'Times 2', value: 'the-times-t2'},
-    {text: 'Bricks & Mortar', value: 'the-times-bricks'},
+   // {text: 'The Times Business', value: 'the-times-business'},
+    //{text: 'The Times Opinion', value: 'the-times-opinion'},
+    {text: 'The Times Sport', value: 'the-times-sport'},
+    //{text: 'Times 2', value: 'the-times-t2'},
+    //{text: 'Bricks & Mortar', value: 'the-times-bricks'},
   ],
   themeData: {
     'red-box': {
       background: '#aec1d0',
-      main: '#183a54',
-      secondary: '#ffffff',
+      headline: '#183a54',
+      name: '#ffffff',
       quote: '#183a54',
+      credit: '#183a54',
+      headlineFont: '"TimesModernCondensed-Regular"',
+      nameFont: '"TimesModernCondensed-Regular"',
+      font: '"TimesModernCondensed-Regular"',
     },
     'the-times-business': {
       background: '#eaeaea',
@@ -41,9 +46,23 @@ var MEME_SETTINGS = {
     },
     'the-times-news': {
       background: '#ebebe9',
-      main: '#6b6b6b',
-      secondary: '#44849d',
+      headline: '#6b6b6b',
+      name: '#44849d',
       quote: '#44849d',
+      credit: '#000000',
+      headlineFont: '"TimesModernCondensed-Regular"',
+      nameFont: '"TimesModernCondensed-Regular"',
+      font: '"TimesModernCondensed-Regular"',
+    },
+    'the-times-sport': {
+      background: '#00313b',
+      headline: '#ffffff',
+      name: '#007b99',
+      quote: '#007b99',
+      credit: '#ffffff',
+      headlineFont: '"TimesModernCondensed-Bold"',
+      nameFont: '"TimesModern-Regular-Italic"',
+      font: '"TimesModernCondensed-Regular"',
     },
   },
 
@@ -63,12 +82,14 @@ var MEME_SETTINGS = {
 
   // Universal font family for texts:
   // Note that you'll need to included quoted font names as you would in CSS, ie: '"Knockout 28 B"'.
-  fontFamily: 'TimesModernCondensed-Regular',
+  fontFamily: '"TimesModernCondensed-Regular"',
   // Font family options: set to empty array to disable font selector.
   // These options may also be formatted as {text:'Knockout', value:'"Knockout 28 B"'}.
   fontFamilyOpts: [
-    {text: 'Times Modern Condensed - Regular', value: 'TimesModernCondensed-Regular'},
-    {text: 'Sunday Times Modern - Medium', value: 'SundayTimesModern-Medium'},
+    {text: 'Times Modern Condensed - Regular', value: '"TimesModernCondensed-Regular"'},
+    {text: 'Times Modern Condensed - Bold', value: '"TimesModernCondensed-Bold"'},
+    {text: 'Times Modern Regular - Italic', value: '"TimesModern-Regular-Italic"'},
+    {text: 'Sunday Times Modern - Medium', value: '"SundayTimesModern-Medium"'},
   ],
 
   // Font size of main headline:
@@ -122,8 +143,11 @@ var MEME_SETTINGS = {
   watermarkOpts: [
     {text: 'None', value: '', data: ''},
     {text: 'Red Box', value: '<%= image_path("redbox-times.png") %>', data: '<%= asset_data_uri("redbox-times.png") %>'},
+    {text: 'Red Box (Inverse)', value: '<%= image_path("redbox-times-inverse.png") %>', data: '<%= asset_data_uri("redbox-times-inverse.png") %>'},
     {text: 'The Times', value: '<%= image_path("thetimes.png") %>', data: '<%= asset_data_uri("thetimes.png") %>'},
-    {text: 'The Sunday Times', value: '<%= image_path("sundaytimes.png") %>', data: '<%= asset_data_uri("sundaytimes.png") %>'}
+    {text: 'The Times (Inverse)', value: '<%= image_path("thetimesinverse.png") %>', data: '<%= asset_data_uri("thetimesinverse.png") %>'},
+    {text: 'The Sunday Times', value: '<%= image_path("sundaytimes.png") %>', data: '<%= asset_data_uri("sundaytimes.png") %>'},
+    {text: 'The Sunday Times (Inverse)', value: '<%= image_path("sundaytimesinverse.png") %>', data: '<%= asset_data_uri("sundaytimesinverse.png") %>'}
   ],
 
   width: 600 // Canvas rendering width.

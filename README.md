@@ -12,6 +12,10 @@ __Contributors:__ Chris Hutchinson (@chrishutchinson), Matthew Taylor (@mattietk
 
 This will start a local web server running at: `http://localhost:4567/`
 
+## Build
+
+Build into the `/build` directory by running `bundle exec middleman build`.
+
 ## Customization
 
 ### Configuration
