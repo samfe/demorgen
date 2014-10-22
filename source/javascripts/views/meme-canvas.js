@@ -206,7 +206,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
             switch(d.fontSize) {
               case '28':
                 var x = padding-10;
-                var y = padding-2;
+                var y = padding-4;
                 break;
               default:
                 var x = padding-8;
