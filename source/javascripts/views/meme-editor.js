@@ -115,7 +115,9 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onRoundel: function() {
     this.model.set('roundel', this.$('[name="roundel"]:checked').val());
-    this.model.set('dragging', 'roundel');
+    if(this.$('[name="roundel"]:checked').val()) {
+      this.model.set('dragging', 'roundel');
+    }
   },
 
   onDragging: function() {
