@@ -8,7 +8,7 @@ MEME.MemeModel = Backbone.Model.extend({
     creditText: 'Source:',
     creditSize: 12,
     downloadName: 'share',
-    dragging: 'background', // Or 'roundel'
+    dragging: null, // Or 'roundel'
     fontColor: 'white',
     fontFamily: 'Helvetica Neue',
     fontFamilyOpts: ['Helvetica', 'Helvetica Neue', 'Comic Sans MS'],
@@ -22,7 +22,7 @@ MEME.MemeModel = Backbone.Model.extend({
     overlayColor: '#000',
     overlayColorOpts: ['#000', '#777', '#2980b9'],
     paddingRatio: 0.05,
-    roundel: true,
+    roundel: false,
     roundelPosition: { x: null, y: null },
     textAlign: 'left',
     textAlignOpts: ['left', 'center', 'right'],

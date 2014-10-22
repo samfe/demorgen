@@ -115,6 +115,7 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onRoundel: function() {
     this.model.set('roundel', this.$('[name="roundel"]:checked').val());
+    this.model.set('dragging', 'roundel');
   },
 
   onDragging: function() {
@@ -249,5 +250,7 @@ MEME.MemeEditorView = Backbone.View.extend({
       this.model.loadBackground(dataTransfer.files[0]);
       this.$('#dropzone').removeClass('pulse');
     }
+
+    this.model.set('dragging', 'background');
   }
 });
