@@ -74,6 +74,8 @@ MEME.MemeEditorView = Backbone.View.extend({
     var d = this.model.toJSON();
     this.$('#headline').val(d.headlineText);
     this.$('#name').val(d.nameText);
+    this.$('[name="dragging"][value="' + d.dragging + '"]').prop('checked', true);
+    this.$('[name="roundel"]').prop('checked', d.roundel);
     this.$('#credit').val(d.creditText);
     this.$('#watermark').val(d.watermarkSrc);
     this.$('#image-scale').val(d.imageScale);
@@ -99,6 +101,8 @@ MEME.MemeEditorView = Backbone.View.extend({
     'change #text-shadow': 'onTextShadow',
     'change [name="overlay"]': 'onOverlayColor',
     'change [name="background"]': 'onBackgroundColor',
+    'change [name="dragging"]': 'onDragging',
+    'change [name="roundel"]': 'onRoundel',
     'dragover #dropzone': 'onZoneOver',
     'dragleave #dropzone': 'onZoneOut',
     'drop #dropzone': 'onZoneDrop',
@@ -107,6 +111,14 @@ MEME.MemeEditorView = Backbone.View.extend({
     'click #singleOpenQuote': 'onSingleOpenQuote',
     'click #singleCloseQuote': 'onSingleCloseQuote',
     'click #emdash': 'onEmdash'
+  },
+
+  onRoundel: function() {
+    this.model.set('roundel', this.$('[name="roundel"]:checked').val());
+  },
+
+  onDragging: function() {
+    this.model.set('dragging', this.$('[name="dragging"]:checked').val());
   },
 
   onDoubleOpenQuote: function() {
