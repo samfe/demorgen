@@ -5,8 +5,10 @@ $m: '.m-canvas';
     width: 60%;
     max-width: 600px;
 
-    position: fixed;
-    top: 113px;
+    &.fixed {
+      position: fixed;
+      top: 23px;
+    }
   }
 
   #{$m}__canvas {

@@ -5,9 +5,21 @@
 MEME.MemeEditorView = Backbone.View.extend({
 
   initialize: function() {
+    _.bindAll(this, 'detectScroll');
+    $(window).scroll(this.detectScroll);
+
     this.buildForms();
     this.listenTo(this.model, 'change', this.render);
     this.render();
+  },
+
+  detectScroll: function(e) {
+    var top = $(document).scrollTop();
+    if(top >= 90) {
+      $('.m-canvas').addClass('fixed');
+    } else {
+      $('.m-canvas').removeClass('fixed');
+    }
   },
 
   // Builds all form options based on model option arrays:
