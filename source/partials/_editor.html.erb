@@ -1,73 +1,81 @@
 <form class="m-editor" id="meme-editor-view">
-  <h2>Currently Dragging</h2>
-  <label for="background">
-    <input id="background" name="dragging" type="radio" value="background" /> Background
-  </label>
-  <label for="dragRoundel">
-    <input id="dragRoundel" name="dragging" type="radio" value="roundel" /> Roundel
-  </label>
-
-  <br /><br />
-
-  <label for="roundel">
-    <input id="roundel" name="roundel" type="checkbox" value="1" /> Enable Roundel
-  </label>
-
-  <hr />
-
-  <div class="dropzone" id="dropzone">Drop Image Here</div>
   
-  <h2><label for="image-scale">Resize image</label></h2>
-  <input id="image-scale" type="range" max="4" min=".01" step=".01" value="1">
-  
-  <h2>
-    <label for="headline">Headline</label>
-    <button id="doubleOpenQuote">&#8220;</button>
-    <button id="doubleCloseQuote">&#8221;</button>
-    <button id="singleOpenQuote">&#8216;</button>
-    <button id="singleCloseQuote">&#8217;</button>
-    <button id="emdash">&#8212;</button>
-  </h2>
-  <textarea id="headline" name="headline" type="text" value=""></textarea>
+  <div class="panel">
+    <div class="panel-header"><h1>1. Choose Style</h1></div>
+    <div class="panel-body">
+      <h2><label for="theme">Theme</label></h2>
+      <select class="theme" id="theme">
+        <option value="" disabled>Select a theme</option>
+      </select>
 
-  <h2><label for="name">Name</label></h2>
-  <input id="name" type="text" name="name" value="" />
-
-  <h2><label for="credit">Credit</label></h2>
-  <input id="credit" name="credit" type="text" value="">
-  
-  <h2><label for="theme">Theme</label></h2>
-  <select class="theme" id="theme">
-    <option value="" disabled>Select a theme</option>
-  </select>
-  
-  <h2><label for="text-align">Align Text</label></h2>
-  <select class="text-align" id="text-align">
-    <option value="" disabled>Select alignment</option>
-  </select>
-  
-  <h2><label for="font-size">Font Size</label></h2>
-  <select class="font-size" id="font-size">
-    <option value="" disabled>Select a font size</option>
-  </select>
-<!--
-  <h2><label for="font-family">Font Face</label></h2>
-  <select class="font-family" id="font-family">
-    <option value="" disabled>Select a font</option>
-  </select>
--->
-
-  <h2><label for="watermark">Watermark</label></h2>
-  <select class="watermark" id="watermark">
-    <option value="" disabled>Select a watermark</option>
-  </select>
-  
-  <!--
-  <div class="m-editor__background" id="background">
-    <h2>Background Color</h2>
-    <ul class="checkbox-group">
-      <li><label><input type="radio" name="background" value="transparent"> Transparent</label></li>
-    </ul>
+      <h2><label for="watermark">Watermark</label></h2>
+      <select class="watermark" id="watermark">
+        <option value="" disabled>Select a watermark</option>
+      </select>
+    </div>
   </div>
-  -->
+
+  <div class="panel">
+    <div class="panel-header"><h1>2. Add Media</h1></div>
+    <div class="panel-body">
+      <div class="dropzone" id="dropzone">Drop Image Here</div>
+  
+      <h2><label for="image-scale">Resize image</label></h2>
+      <input id="image-scale" type="range" max="4" min=".01" step=".01" value="1">
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-header"><h1>3. Configure Roundel</h1></div>
+    <div class="panel-body">
+      <label for="roundel">
+        <input id="roundel" name="roundel" type="checkbox" value="1" /> Enable Roundel
+      </label>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-header"><h1>4. Position Elements</h1></div>
+    <div class="panel-body">
+      <em>Select the item you wish to drag around the canvas</em><br />
+      <label for="background">
+        <input id="background" name="dragging" type="radio" value="background" /> Background
+      </label>
+      <label for="dragRoundel">
+        <input id="dragRoundel" name="dragging" type="radio" value="roundel" /> Roundel
+      </label>
+    </div>
+  </div>
+
+  
+  <div class="panel">
+    <div class="panel-header"><h1>5. Add Text &amp; Fonts</h1></div>
+    <div class="panel-body">
+      <h2>
+        <label for="headline">Headline</label>
+        <button id="doubleOpenQuote">&#8220;</button>
+        <button id="doubleCloseQuote">&#8221;</button>
+        <button id="singleOpenQuote">&#8216;</button>
+        <button id="singleCloseQuote">&#8217;</button>
+        <button id="emdash">&#8212;</button>
+      </h2>
+      <textarea id="headline" name="headline" type="text" value=""></textarea>
+
+      <h2><label for="name">Name</label></h2>
+      <input id="name" type="text" name="name" value="" />
+
+      <h2><label for="credit">Credit</label></h2>
+      <input id="credit" name="credit" type="text" value="">
+
+      <h2><label for="text-align">Align Text</label></h2>
+      <select class="text-align" id="text-align">
+        <option value="" disabled>Select alignment</option>
+      </select>
+      
+      <h2><label for="font-size">Font Size</label></h2>
+      <select class="font-size" id="font-size">
+        <option value="" disabled>Select a font size</option>
+      </select>
+    </div>
+  </div>
 </form>

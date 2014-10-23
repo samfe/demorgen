@@ -7,7 +7,7 @@ $m: '.m-editor';
     @include box-sizing(border-box);
     float: right;
     padding-left: 20px;
-    width: 30%;
+    width: 40%;
   }
 
   .dropzone {
@@ -37,6 +37,28 @@ $m: '.m-editor';
       animation: pulsate 0.3s infinite;
       animation-direction: alternate;
       animation-timing-function: ease-in-out;
+    }
+  }
+
+  .panel {
+    border-radius: 10px;
+    border: 3px solid #eaeaea;
+    margin: 0 0 15px 0;
+
+    .panel-header {
+      background: #eaeaea;
+      width: 100%;
+      overflow: hidden;
+      padding: 10px;
+
+      h1 {
+        margin: 0;
+        font-size: 20px;
+      }
+    }
+
+    .panel-body {
+      padding: 10px;
     }
   }
 
