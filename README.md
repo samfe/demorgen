@@ -1,4 +1,4 @@
-# CardKit
+# CardKit v1.2
 
 Forked from [Meme](https://github.com/voxmedia/meme), customised for The Times and The Sunday Times.
 
