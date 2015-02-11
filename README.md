@@ -7,6 +7,7 @@ __Contributors:__ Chris Hutchinson (@chrishutchinson), Matthew Taylor (@mattietk
 ## Install
 
 * `git clone https://github.com/times/cardkit.git`
+* `sudo gem install bundler`
 * `bundle install`
 * `bundle exec middleman`
 
