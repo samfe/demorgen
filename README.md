@@ -1,5 +1,11 @@
 # CardKit v1.2
 
+## **[NEW VERSION (v2)](https://github.com/times/cardkit-v2)**
+
+Development has begun on a new version of CardKit using SVG, and offering considerably more flexibility to create your own configurations and themes.
+
+----
+
 Forked from [Meme](https://github.com/voxmedia/meme), customised for The Times and The Sunday Times.
 
 __Contributors:__ Chris Hutchinson (@chrishutchinson), Matthew Taylor (@mattietk)
