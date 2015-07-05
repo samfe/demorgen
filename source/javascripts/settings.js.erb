@@ -1,7 +1,7 @@
 var MEME_SETTINGS = {
   theme: 'red-box',
   themeOpts: [
-    {text: 'Red Box', value: 'red-box'},
+    {text: 'De Morgen rood', value: 'demorgen-rood'},
     {text: 'The Times News', value: 'the-times-news'},
     {text: 'The Times Opinion', value: 'the-times-opinion'},
     {text: 'The Times Sport', value: 'the-times-sport'},
@@ -11,15 +11,15 @@ var MEME_SETTINGS = {
     {text: 'Times2', value: 'times-2'},
   ],
   themeData: {
-    'red-box': {
-      background: '#aec1d0',
-      headline: '#183a54',
+    'demorgen-rood': {
+      background: '#e42e24',
+      headline: '#fffff',
       name: '#ffffff',
       quote: '#183a54',
       credit: '#000000',
-      headlineFont: '"TimesModernCondensed-Regular"',
-      nameFont: '"TimesModernCondensed-Regular"',
-      font: '"TimesModernCondensed-Regular"',
+      headlineFont: '"publico_banner_webbold"',
+      nameFont: '"publico_banner_webbold"',
+      font: '"publico_banner_webbold"',
       roundelBackground: '#000000',
       roundelColor: '#FFFFFF',
     },
@@ -147,7 +147,7 @@ var MEME_SETTINGS = {
   // Font family options: set to empty array to disable font selector.
   // These options may also be formatted as {text:'Knockout', value:'"Knockout 28 B"'}.
   fontFamilyOpts: [
-    {text: 'Times Modern Condensed - Regular', value: '"TimesModernCondensed-Regular"'},
+    {text: 'Publico Banner - Bold', value: '"publico_banner_webbold"'},
     {text: 'Times Modern Condensed - Bold', value: '"TimesModernCondensed-Bold"'},
     {text: 'Times Modern Regular - Italic', value: '"TimesModern-Regular-Italic"'},
     {text: 'Sunday Times Modern - Medium', value: '"SundayTimesModern-Medium"'},
@@ -170,12 +170,12 @@ var MEME_SETTINGS = {
   imageSrc: '', // Default background image path. MUST reside on host domain, or use base64 data.
   overlayAlpha: 0.5, // Opacity of image overlay.
 
-  roundelText: '30-day trial only £1',
+  roundelText: 'Nu te lezen in DM+',
 
   // Image overlay color, or blank ('') for no overlay:
-  overlayColor: '#ebebe9',
+  overlayColor: '#e42e24',
   // Overlay color options: set to empty array to disable overlay options selector.
-  overlayColorOpts: ['#ebebe9'],
+  overlayColorOpts: ['#e42e24'],
 
   backgroundColor: '#ebebe9',
   // Overlay color options: set to empty array to disable overlay options selector.
@@ -205,7 +205,7 @@ var MEME_SETTINGS = {
   // Otherwise, just leave "data" attributes blank and allow images to load from your server.
   watermarkOpts: [
     {text: 'None', value: '', data: ''},
-    {text: 'Red Box', value: '<%= image_path("redbox-times.png") %>', data: '<%= asset_data_uri("redbox-times.png") %>'},
+    {text: 'De Morgen', value: '<%= image_path("demorgen_wit.png") %>', data: '<%= asset_data_uri("demorgen_wit.png") %>'},
     {text: 'Red Box (Inverse)', value: '<%= image_path("redbox-times-inverse.png") %>', data: '<%= asset_data_uri("redbox-times-inverse.png") %>'},
     {text: 'The Times', value: '<%= image_path("thetimes.png") %>', data: '<%= asset_data_uri("thetimes.png") %>'},
     {text: 'The Times (Inverse)', value: '<%= image_path("thetimesinverse.png") %>', data: '<%= asset_data_uri("thetimesinverse.png") %>'},
