@@ -1,41 +1,41 @@
 <form class="m-editor" id="meme-editor-view">
   
   <div class="panel">
-    <div class="panel-header"><h1>1. Choose Style</h1></div>
+    <div class="panel-header"><h1>1. Kies een stijl</h1></div>
     <div class="panel-body">
-      <h2><label for="theme">Theme</label></h2>
+      <h2><label for="theme">Thema</label></h2>
       <select class="theme" id="theme">
-        <option value="" disabled>Select a theme</option>
+        <option value="" disabled>Selecteer een thema</option>
       </select>
 
-      <h2><label for="watermark">Watermark</label></h2>
+      <h2><label for="watermark">Logo</label></h2>
       <select class="watermark" id="watermark">
-        <option value="" disabled>Select a watermark</option>
+        <option value="" disabled>Selecteer een logo</option>
       </select>
     </div>
   </div>
 
   <div class="panel">
-    <div class="panel-header"><h1>2. Add Media</h1></div>
+    <div class="panel-header"><h1>2. Voeg media</h1></div>
     <div class="panel-body">
-      <div class="dropzone" id="dropzone">Drop Image Here</div>
+      <div class="dropzone" id="dropzone">Sleep afbeelding hierheen</div>
   
-      <h2><label for="image-scale">Resize image</label></h2>
+      <h2><label for="image-scale">Herschaal afbeelding</label></h2>
       <input id="image-scale" type="range" max="4" min=".01" step=".01" value="1">
     </div>
   </div>
 
   <div class="panel">
-    <div class="panel-header"><h1>3. Configure Roundel</h1></div>
+    <div class="panel-header"><h1>3. Voeg DM+-logo toe</h1></div>
     <div class="panel-body">
       <label for="roundel">
-        <input id="roundel" name="roundel" type="checkbox" value="1" /> Enable Roundel
+        <input id="roundel" name="roundel" type="checkbox" value="1" /> Toevoegen
       </label>
     </div>
   </div>
 
   <div class="panel">
-    <div class="panel-header"><h1>4. Position Elements</h1></div>
+    <div class="panel-header"><h1>4. Positioneer</h1></div>
     <div class="panel-body">
       <em>Select the item you wish to drag around the canvas</em><br />
       <label for="background">
@@ -49,10 +49,10 @@
 
   
   <div class="panel">
-    <div class="panel-header"><h1>5. Add Text &amp; Fonts</h1></div>
+    <div class="panel-header"><h1>5. Voeg tekst toe</h1></div>
     <div class="panel-body">
       <h2>
-        <label for="headline">Headline</label>
+        <label for="headline">Kop</label>
         <button id="doubleOpenQuote">&#8220;</button>
         <button id="doubleCloseQuote">&#8221;</button>
         <button id="singleOpenQuote">&#8216;</button>
@@ -61,10 +61,10 @@
       </h2>
       <textarea id="headline" name="headline" type="text" value=""></textarea>
 
-      <h2><label for="name">Name</label></h2>
+      <h2><label for="name">Naam</label></h2>
       <input id="name" type="text" name="name" value="" />
 
-      <h2><label for="credit">Credit</label></h2>
+      <h2><label for="credit">Bron</label></h2>
       <input id="credit" name="credit" type="text" value="">
 
       <h2><label for="text-align">Align Text</label></h2>
